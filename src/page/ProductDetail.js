@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
   const [product , setProduct] = useState(null);
   const getProductDetail = async () => {
     console.log('dsds');
-    let url = `https://my-json-server.typicode.com/<Jeongseoyoon>/<yoon-hnm>/products/${id}`
+    let url = `https://my-json-server.typicode.com/Jeongseoyoon/yoon-hnm/products/${id}`
     let response = await fetch(url);
     let data = await response.json();
     setProduct(data)

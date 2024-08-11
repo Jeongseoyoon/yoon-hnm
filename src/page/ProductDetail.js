@@ -19,7 +19,7 @@ import { useParams } from 'react-router-dom'
     <Container>
       <Row>
         <Col>
-          <img src={product?.img} alt='Product Image'/>
+          <img src={product?.img} alt='Product'/>
         </Col>
         <Col>
           <div>{product?.title}</div>

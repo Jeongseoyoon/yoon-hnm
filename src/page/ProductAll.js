@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import ProductCard from '../component/ProductCard';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useSearchParams } from 'react-router-dom';
@@ -7,7 +7,7 @@ const ProductAll = () => {
   let [products, setProducts] = useState([]);
   const [query, setQuery] = useSearchParams();
   
-  const getProducts = async () => {
+  const getProducts = useCallback(async () => {
     let searchQuery = query.get('q') || "";
     console.log('searchQuery',searchQuery);
     let url = `https://my-json-server.typicode.com/Jeongseoyoon/yoon-hnm/products?q=${searchQuery}`;
@@ -15,11 +15,11 @@ const ProductAll = () => {
     let data = await response.json();
     console.log('fdfd',data);
     setProducts(data);
-  };
+  },[query]);
 
   useEffect(()=>{
       getProducts()
-    },[query]);
+    },[getProducts, query]);
   return (
     <div>
       <Container>
